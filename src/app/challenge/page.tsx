@@ -22,7 +22,7 @@ export default function ChallengePage() {
             <p className="text-center font-body text-sm text-muted-foreground">Choose your level to begin:</p>
             <div className="grid grid-cols-1 gap-3">
               {levels.map((level) => (
-                <Button key={level} asChild size="lg" className="font-headline py-6 text-lg transition-transform hover:scale-105 bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Button key={level} asChild size="lg" className="font-headline py-6 text-lg transition-transform hover:scale-105">
                   <Link href={`/test?level=${level}`}>{level}</Link>
                 </Button>
               ))}
