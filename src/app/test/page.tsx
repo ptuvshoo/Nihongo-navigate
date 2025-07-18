@@ -8,6 +8,7 @@ import Quiz from '@/components/quiz';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Loader2, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 function TestPageContent() {
   const searchParams = useSearchParams();
@@ -39,10 +40,16 @@ function TestPageContent() {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 text-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="font-body text-lg text-muted-foreground">Generating your {level} test...</p>
-      </div>
+      <Card className="w-full max-w-4xl">
+        <CardHeader className="text-center">
+            <h1 className="font-headline text-2xl">Japanese Language Proficiency Test</h1>
+            <p className="text-muted-foreground font-body">Level {level}</p>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center justify-center gap-4 text-center min-h-96">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+            <p className="font-body text-lg text-muted-foreground">Generating your {level} test...</p>
+        </CardContent>
+      </Card>
     );
   }
 
@@ -68,7 +75,7 @@ function TestPageContent() {
 
 export default function TestPage() {
     return (
-        <main className="flex min-h-screen w-full items-center justify-center p-4">
+        <main className="flex min-h-screen w-full items-center justify-center p-4 bg-gray-100 dark:bg-gray-900 font-serif">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center gap-4">
                 <Loader2 className="h-12 w-12 animate-spin text-primary" />

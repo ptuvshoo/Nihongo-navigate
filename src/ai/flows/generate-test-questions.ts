@@ -23,6 +23,7 @@ const GenerateTestQuestionsOutputSchema = z.object({
       question: z.string().describe('The test question.'),
       options: z.array(z.string()).describe('The possible answers to the question.'),
       correctAnswer: z.string().describe('The correct answer to the question.'),
+      category: z.enum(['Vocabulary', 'Grammar', 'Kanji']).describe('The category of the question (Vocabulary, Grammar, or Kanji).'),
     })
   ).describe('A list of questions for the JLPT exam.'),
 });
@@ -40,7 +41,8 @@ const prompt = ai.definePrompt({
 
 You will generate {{numberOfQuestions}} multiple-choice questions for the JLPT level {{level}}.
 Each question should have four answer options, and you should clearly indicate the correct answer.
-The output should be a JSON object with a 'questions' array. Each element of the array should have question, options and correctAnswer. The options should be an array of strings.`, 
+Each question must be categorized as 'Vocabulary', 'Grammar', or 'Kanji'.
+The output should be a JSON object with a 'questions' array. Each element of the array should have question, options, correctAnswer and category. The options should be an array of strings.`, 
 });
 
 const generateTestQuestionsFlow = ai.defineFlow(
