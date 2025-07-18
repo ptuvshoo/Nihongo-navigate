@@ -60,7 +60,7 @@ function TestPageContent() {
         <h2 className="font-headline text-2xl text-destructive mb-2">Error</h2>
         <p className="font-body text-muted-foreground mb-6">{error}</p>
         <Button asChild>
-          <Link href="/"><ArrowLeft className="mr-2 h-4 w-4" />Back to Home</Link>
+          <Link href="/challenge"><ArrowLeft className="mr-2 h-4 w-4" />Back to Home</Link>
         </Button>
       </div>
     );

@@ -41,7 +41,7 @@ export default function Quiz({ questions, level }: QuizProps) {
             <CardDescription>Level {level}</CardDescription>
           </div>
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/"><Home className="mr-2 h-4 w-4"/> Home</Link>
+            <Link href="/challenge"><Home className="mr-2 h-4 w-4"/> Home</Link>
           </Button>
         </div>
       </CardHeader>
