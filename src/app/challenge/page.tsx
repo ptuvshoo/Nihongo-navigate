@@ -1,36 +1,64 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpenCheck } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Dumbbell, Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-const levels = ["N1", "N2", "N3", "N4", "N5"];
-
-export default function ChallengePage() {
+export default function ChallengeDashboard() {
   return (
-    <main className="flex min-h-screen w-full items-center justify-center p-4 bg-slate-50">
-      <div className="w-full max-w-md">
-        <Card className="shadow-lg rounded-xl">
-          <CardHeader className="text-center p-6">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
-               <BookOpenCheck className="h-8 w-8 text-primary" />
+    <div className="w-full max-w-5xl mx-auto">
+      <section className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
+        <div className="text-left md:w-1/2">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Start your testing journey today!</h1>
+          <p className="text-lg text-gray-600 mb-8">
+            Join millions of students who have taken the Duolingo English Test.
+          </p>
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">BUY NOW</Button>
+        </div>
+        <div className="md:w-1/2">
+          <Image 
+            src="https://placehold.co/400x300.png"
+            data-ai-hint="boy walking sign"
+            alt="Illustration of a student walking towards a sign" 
+            width={400} 
+            height={300} 
+            className="w-full h-auto"
+          />
+        </div>
+      </section>
+
+      <div className="border-t border-gray-200 my-16"></div>
+
+      <section className="text-left">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">Not quite ready?</h2>
+        <p className="text-lg text-gray-600 mb-8">
+          No problem! Prepare with our collection of reference materials and practice exercises.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          <Card className="p-6 flex items-center gap-6 hover:shadow-lg transition-shadow border-gray-300">
+            <div className="p-4 bg-orange-100 rounded-lg">
+                <Dumbbell className="h-8 w-8 text-orange-500" />
             </div>
-            <CardTitle className="font-headline text-3xl">Nihongo Challenge</CardTitle>
-            <CardDescription className="font-body pt-2 text-base">
-              Test your Japanese knowledge with AI-generated JLPT questions.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-4 p-6 pt-0">
-            <p className="text-center font-body text-sm text-muted-foreground">Choose your level to begin:</p>
-            <div className="grid grid-cols-1 gap-3">
-              {levels.map((level) => (
-                <Button key={level} asChild size="lg" className="font-headline py-6 text-lg transition-transform hover:scale-105">
-                  <Link href={`/test?level=${level}`}>{level}</Link>
-                </Button>
-              ))}
+            <div>
+              <h3 className="text-xl font-bold text-gray-800">Take a practice test</h3>
+              <Link href="/challenge/practice" className="text-blue-600 font-bold hover:underline">
+                PRACTICE FREE >
+              </Link>
             </div>
-          </CardContent>
-        </Card>
-      </div>
-    </main>
+          </Card>
+          <Card className="p-6 flex items-center gap-6 hover:shadow-lg transition-shadow border-gray-300">
+            <div className="p-4 bg-orange-100 rounded-lg">
+                <Search className="h-8 w-8 text-orange-500" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-800">Learn about the test</h3>
+              <Link href="#" className="text-blue-600 font-bold hover:underline">
+                LEARN MORE >
+              </Link>
+            </div>
+          </Card>
+        </div>
+      </section>
+    </div>
   );
 }
