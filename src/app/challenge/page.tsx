@@ -13,7 +13,7 @@ export default function ChallengePage() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 mb-4">
                <BookOpenCheck className="h-8 w-8 text-primary" />
             </div>
-            <CardTitle className="font-headline text-3xl">Nihongo Challenge</CardTitle>
+            <CardTitle className="font-headline text-3xl">My Tests</CardTitle>
             <CardDescription className="font-body pt-2 text-base">
               Test your Japanese knowledge with AI-generated JLPT questions.
             </CardDescription>
