@@ -10,7 +10,7 @@ export default function ChallengePage() {
     <div className="flex items-center justify-center w-full">
         <Card className="w-full max-w-md shadow-lg rounded-xl">
           <CardHeader className="text-center p-6">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 mb-4">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent mb-4">
                <BookOpenCheck className="h-8 w-8 text-primary" />
             </div>
             <CardTitle className="font-headline text-3xl">My Tests</CardTitle>

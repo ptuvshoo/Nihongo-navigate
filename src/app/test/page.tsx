@@ -75,7 +75,7 @@ function TestPageContent() {
 
 export default function TestPage() {
     return (
-        <main className="flex min-h-screen w-full items-center justify-center p-4 bg-gray-100 dark:bg-gray-900 font-serif">
+        <main className="flex min-h-screen w-full items-center justify-center p-4 bg-slate-50">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center gap-4">
                 <Loader2 className="h-12 w-12 animate-spin text-primary" />

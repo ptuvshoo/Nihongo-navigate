@@ -38,7 +38,7 @@ export default function Quiz({ questions, level }: QuizProps) {
         <div className="flex justify-between items-center">
           <div>
             <CardTitle className="font-headline text-2xl">Japanese Language Proficiency Test</CardTitle>
-            <CardDescription>Level {level}</CardDescription>
+            <CardDescription className="font-body">Level {level}</CardDescription>
           </div>
           <Button variant="ghost" size="sm" asChild>
             <Link href="/challenge"><Home className="mr-2 h-4 w-4"/> Home</Link>
@@ -74,7 +74,7 @@ export default function Quiz({ questions, level }: QuizProps) {
           </div>
         ))}
       </CardContent>
-      <CardFooter className="p-6 bg-gray-50 border-t flex justify-end">
+      <CardFooter className="p-6 bg-slate-50 border-t flex justify-end">
         <Button
           onClick={handleSubmit}
           disabled={Object.keys(answers).length !== questions.length}
