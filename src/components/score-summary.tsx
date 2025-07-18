@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Award, Repeat, Home, BrainCircuit, Loader2 } from "lucide-react";
 import Link from "next/link";
 import type { GenerateTestQuestionsOutput } from "@/ai/flows/generate-test-questions";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { getTestAnalysis } from "@/app/actions";
 import type { AnalyzeTestResultsOutput } from "@/ai/flows/analyze-test-results";
 
@@ -19,21 +19,24 @@ export default function ScoreSummary({ level, questions, answers }: ScoreSummary
   const [analysis, setAnalysis] = useState<AnalyzeTestResultsOutput | null>(null);
   const [isLoadingAnalysis, setIsLoadingAnalysis] = useState(true);
 
-  let score = 0;
-  const results = questions.map((q, index) => {
-    const userAnswer = answers[index] || "Not Answered";
-    const isCorrect = userAnswer === q.correctAnswer;
-    if (isCorrect) {
-      score++;
-    }
-    return {
-      question: q.question,
-      category: q.category,
-      userAnswer,
-      correctAnswer: q.correctAnswer,
-      isCorrect,
-    };
-  });
+  const { score, results } = useMemo(() => {
+    let currentScore = 0;
+    const currentResults = questions.map((q, index) => {
+      const userAnswer = answers[index] || "Not Answered";
+      const isCorrect = userAnswer === q.correctAnswer;
+      if (isCorrect) {
+        currentScore++;
+      }
+      return {
+        question: q.question,
+        category: q.category,
+        userAnswer,
+        correctAnswer: q.correctAnswer,
+        isCorrect,
+      };
+    });
+    return { score: currentScore, results: currentResults };
+  }, [questions, answers]);
 
   useEffect(() => {
     async function fetchAnalysis() {
@@ -116,7 +119,7 @@ export default function ScoreSummary({ level, questions, answers }: ScoreSummary
             Try Again
           </Button>
           <Button asChild variant="secondary" className="font-headline" size="lg">
-            <Link href="/">
+            <Link href="/challenge">
               <Home className="mr-2 h-4 w-4" />
               Choose Another Level
             </Link>

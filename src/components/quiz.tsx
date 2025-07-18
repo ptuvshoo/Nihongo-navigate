@@ -6,7 +6,7 @@ import ScoreSummary from './score-summary';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { CheckCircle, XCircle, Home, ArrowRight, Lightbulb } from 'lucide-react';
+import { Home, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 type QuizProps = {
